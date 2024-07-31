@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Check</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let database = [
+                { username: "gurleen", password: "1234" },
+                { username: "kaur", password: "9000" },
+                { username: "nirmal", password: "4331" },
+                { username: "harsh", password: "1234678" },
+                { username: "harshjot", password: "7896" },
+                { username: "gur", password: "5674" },
+                { username: "deep", password: "1478" },
+                { username: "amar", password: "7530" },
+                { username: "navneet", password: "2984" },
+                { username: "man", password: "9076" },
+                { username: "user", password: "1092" },
+                { username: "ram", password: "78544" }
+            ];
+
+            function isUserValid(username, password) {
+                for (let i = 0; i < database.length; i++) {
+                    if (database[i].username === username && database[i].password === password) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            function signIn(username, password, location) {
+                if (isUserValid(username, password)) {
+                    if (location === "punjab") {
+                        window.location = "https://www.google.com/maps?q=punjab";
+                    } else if (location === "haryana") {
+                        window.location = "https://www.google.com/maps?q=haryana";
+                    } else if (location === "chandigarh") {
+                        window.location = "https://www.google.com/maps?q=chandigarh";
+                    }
+                } else {
+                    alert("Wrong Credentials");
+                }
+            }
+
+            let location = prompt("Enter your location: ");
+            if (location.toLowerCase() === "punjab" || location.toLowerCase() === "haryana" || location.toLowerCase() === "chandigarh") {
+                let usernamePrompt = prompt("Enter your Username");
+                let passwordPrompt = prompt("Enter your Password");
+                signIn(usernamePrompt, passwordPrompt, location.toLowerCase());
+            } else {
+                alert("Access Denied");
+            }
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
